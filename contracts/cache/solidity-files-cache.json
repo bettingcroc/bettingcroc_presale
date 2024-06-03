@@ -1,0 +1,90 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/home/achille/prog/bettingcroc/contracts/contracts/Bettingcroc.sol": {
+      "lastModificationDate": 1712604984184,
+      "contentHash": "b7238c44c39033b46ee16dfee5f7b6a7",
+      "sourceName": "contracts/Bettingcroc.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0",
+        "^0.8.0",
+        "^0.8.0",
+        "^0.8.0",
+        "^0.8.0",
+        "^0.8.0",
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Context",
+        "ERC20",
+        "ERC20Burnable",
+        "IERC20",
+        "IERC20Metadata",
+        "Ownable",
+        "Bettingcroc"
+      ]
+    },
+    "/home/achille/prog/bettingcroc/contracts/contracts/Presale.sol": {
+      "lastModificationDate": 1712604743278,
+      "contentHash": "37a7ca94c81977ae094bcf4340d015c4",
+      "sourceName": "contracts/Presale.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ISTINKAT",
+        "Presale"
+      ]
+    }
+  }
+}

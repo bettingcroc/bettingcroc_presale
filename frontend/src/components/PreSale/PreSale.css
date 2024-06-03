@@ -1,0 +1,176 @@
+#presale {
+    background-color: rgb(255, 255, 255, 0.1);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px;
+    width: 80vw;
+    margin: auto;
+    gap: 40px;
+}
+
+#connecterDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 25%;
+}
+
+.walletsImage {
+    height: 60px;
+}
+
+#closeImage {
+    height: 60px;
+}
+
+#chooseYourProvider {
+    font-family: Rubik;
+    font-size: 20px;
+}
+
+#boxConnected {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 25%;
+
+}
+
+#infosPreSale {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 25%;
+}
+
+#packsToBuyInput {
+    padding: 12px 24px;
+    font-size: 30px;
+    border: 2px black solid;
+    border-radius: 24px;
+    width: 300px;
+
+}
+
+input:focus {
+    outline: none;
+}
+
+#boxPreSale {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+#buyStinkat {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 30px;
+    border: none;
+    border-radius: 24px;
+    width: 352px;
+    box-shadow: 0 0 6px rgba(202, 228, 225, .92), 0 0 30px rgba(202, 228, 225, .34), 0 0 12px rgba(30, 132, 242, .52), 0 0 21px rgba(30, 132, 242, .92), 0 0 34px rgba(30, 132, 242, .78), 0 0 54px rgba(30, 132, 242, .92);
+}
+
+#buyStinkat:hover {
+    box-shadow: 0 0 12px rgba(202, 228, 225, .92), 0 0 60px rgba(202, 228, 225, .34), 0 0 24px rgba(30, 132, 242, .52), 0 0 42px rgba(30, 132, 242, .92), 0 0 68px rgba(30, 132, 242, .78), 0 0 108px rgba(30, 132, 242, .92);
+}
+
+.packsToBuyInput2 {
+    padding: 12px 24px;
+    font-size: 30px;
+    border: 2px rgb(78, 78, 78) solid;
+    border-radius: 24px;
+    width: 300px;
+    color: rgb(104, 104, 104);
+}
+
+.buttonTransparent {
+    background: rgb(255, 255, 255, 0.3);
+    border: none;
+    width: 300px;
+    padding: 40px 0px;
+    border-radius: 24px;
+}
+
+#line2Modal {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.walletName {
+    color: white;
+    font-size: 20px;
+}
+
+#disconnect {
+    background-color: rgb(26, 43, 89);
+    color: white;
+    padding: 20px;
+    border-radius: 24px;
+    border: none;
+    font-size: 22px;
+}
+
+#buyBox {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: auto;
+}
+
+@media screen and (max-width: 1080px) {
+    #boxPreSale {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    #presale {
+        padding: 30px 10px;
+        width: calc(100vw - 40px);
+    }
+
+    #packsToBuyInput {
+        width: 80%;
+    }
+
+    .packsToBuyInput2 {
+        width: 80%;
+
+    }
+
+    #buyStinkat {
+        width: 100%;
+
+    }
+
+    #buyBox {
+        order: 2;
+    }
+
+    #boxConnected {
+        width: 100%;
+        order: 0;
+    }
+
+    #infosPreSale {
+        width: 100%;
+        order: 1;
+
+    }
+
+    #metamaskConnecterDiv {
+        display: none;
+    }
+
+    #connecterDiv {
+        width: 100%;
+        order: 0;
+
+    }
+}
