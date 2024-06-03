@@ -19,7 +19,7 @@ app.get('/static/:dir/:file', (req, res) => {
 
 app.get('/*', (req, res) => {
   console.log('GET /')
-  console.log(req.header('Origin'))
+  console.log(req)
   res.sendFile(__dirname + "/frontend/build/index.html");
 });
 
