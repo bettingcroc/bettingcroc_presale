@@ -1,10 +1,84 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/home/achille/prog/bettingcroc/contracts/contracts/Bettingcroc.sol": {
-      "lastModificationDate": 1712604984184,
-      "contentHash": "b7238c44c39033b46ee16dfee5f7b6a7",
-      "sourceName": "contracts/Bettingcroc.sol",
+    "/home/achille/prog/bettingcroc/presale/contracts/contracts/Vesting.sol": {
+      "lastModificationDate": 1718084944738,
+      "contentHash": "023c2a58323e2c0152ac9811fc81db38",
+      "sourceName": "contracts/Vesting.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "TokenVesting"
+      ]
+    },
+    "/home/achille/prog/bettingcroc/presale/contracts/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+      "lastModificationDate": 1718084659694,
+      "contentHash": "5517c8678c18eb1a8ba58810e7ca39ca",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.20"
+      ],
+      "artifacts": [
+        "IERC20"
+      ]
+    },
+    "/home/achille/prog/bettingcroc/presale/contracts/contracts/Bcroc.sol": {
+      "lastModificationDate": 1718154952164,
+      "contentHash": "7f32c52e7a21dcc7b56ae5fa40173d0c",
+      "sourceName": "contracts/Bcroc.sol",
       "solcConfig": {
         "version": "0.8.24",
         "settings": {
@@ -40,18 +114,18 @@
         "^0.8.0"
       ],
       "artifacts": [
+        "Bettingcroc",
         "Context",
         "ERC20",
         "ERC20Burnable",
         "IERC20",
         "IERC20Metadata",
-        "Ownable",
-        "Bettingcroc"
+        "Ownable"
       ]
     },
-    "/home/achille/prog/bettingcroc/contracts/contracts/Presale.sol": {
-      "lastModificationDate": 1712604743278,
-      "contentHash": "37a7ca94c81977ae094bcf4340d015c4",
+    "/home/achille/prog/bettingcroc/presale/contracts/contracts/Presale.sol": {
+      "lastModificationDate": 1719292728354,
+      "contentHash": "9be8e13ad425c41a98ef31b56cf79c81",
       "sourceName": "contracts/Presale.sol",
       "solcConfig": {
         "version": "0.8.24",
@@ -82,8 +156,45 @@
         "^0.8.0"
       ],
       "artifacts": [
-        "ISTINKAT",
+        "IBCROC",
         "Presale"
+      ]
+    },
+    "/home/achille/prog/bettingcroc/presale/contracts/contracts/PresaleVesting.sol": {
+      "lastModificationDate": 1719265680775,
+      "contentHash": "0d4e73f19bccd1581108edb5b7cd0711",
+      "sourceName": "contracts/PresaleVesting.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IBCROC",
+        "PresaleVesting"
       ]
     }
   }

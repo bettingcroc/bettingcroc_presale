@@ -8,198 +8,16 @@ import ConnectWc from '../ConnectWC/ConnectWC';
 import ConnectCb from '../ConnectCB/ConnectCB';
 import React, { useState, useEffect } from 'react';
 import closeImage from "../../assets/close.png"
+import arrowDown from "../../assets/arrowDown.png"
+import bnb from "../../assets/bnb.webp"
+import bcroc from "../../assets/Logo-05.png"
 import "./PreSale.css"
-const DEFAULT_ETH_JSONRPC_URL = "https://mainnet.base.org"
-const PRESALE_ABI = [
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_tokenAddress",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "balances",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "burnRemainingTOkens",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_amount",
-        "type": "uint256"
-      }
-    ],
-    "name": "buyTokens",
-    "outputs": [],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_address",
-        "type": "address"
-      }
-    ],
-    "name": "getBalance",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getIsPreSaleLive",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getTotalPresaleTokensRemaining",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "isPreSaleLive",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "maxTokenPerUser",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "owner",
-    "outputs": [
-      {
-        "internalType": "address payable",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "presalePrice",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "togglePreSaleStatus",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "token",
-    "outputs": [
-      {
-        "internalType": "contract ISTINKAT",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "totalPresaleTokensRemaining",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "withdraw",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  }
-]
-const PRESALE_ADDRESS = "0x6e4782e06632967D5260355Aa0963BcB1DaB7fA3"
+import cadenasClosed from "../../assets/cadenas.png"
+import cadenasOpen from "../../assets/cadenas-ouvert.png"
+
+import { PRESALE_ABI, PRESALE_ADDRESS } from "../../config.js";
+const DEFAULT_ETH_JSONRPC_URL = "https://data-seed-prebsc-1-s1.bnbchain.org:8545"
+
 const PreSale = (props) => {
   const [web3, setWeb3] = useState(new Web3(DEFAULT_ETH_JSONRPC_URL))
   const [defaultAccount, setDefaultAccount] = useState()
@@ -207,19 +25,24 @@ const PreSale = (props) => {
   const [preSaleContract, setPreSaleContract] = useState()
   const [tokensRemaining, setTokensRemaining] = useState()
   const [balance, setBalance] = useState()
-  const [ethToBuy, setEthToBuy] = useState(0)
-  const [stinkatToBuy, setStinkatToBuy] = useState(0)
-  const [packsToBuy, setPacksToBuy] = useState(0)
+  const [bcrocToBuy, setBcrocToBuy] = useState(20000)
+  const [bnbToBuy, setBnbToBuy] = useState(0.05)
   const [isPreSaleLive, setIsPreSaleLive] = useState()
-
+  const [tokensTotal, setTokensTotal] = useState(0)
+  const [tokensReleased, setTokensReleased] = useState(0)
+  const [tokensReleasables, setTokensReleasables] = useState(0)
+  const [vestingEnd, setVestingEnd] = useState()
+  const [bnbPrice, setBnbPrice] = useState()
+  const [areTokensClaimable, setAreTokensClaimable] = useState()
+  const [alertMsg, setAlertMsg] = useState("invisible")
+  const [textMsg, setTextMsg] = useState("")
   function decimalsConverter(numberToConvert) {
     return Math.pow(numberToConvert, 18)
   }
   function weiconvert(number) { return BigInt(number * decimalsConverter(10)); }
   function changePacks(packs) {
-    setPacksToBuy(packs)
-    setStinkatToBuy(660 * packs)
-    setEthToBuy(parseFloat(0.0003 * packs).toPrecision(2))
+    setBnbToBuy(packs)
+    setBcrocToBuy(400000 * packs)
   }
   function disconnect() {
     console.log("disconnecting wallet")
@@ -228,13 +51,23 @@ const PreSale = (props) => {
     localStorage.clear();
   }
   function buyTokens() {
-    let amountOfTokens = BigInt((660 * packsToBuy).toString() + "000000000000000000")
-    let amountOfEth = BigInt((ethToBuy * 1000000).toString() + "000000000000")
-    console.log(amountOfTokens)
+    if(!isPreSaleLive ){
+      return
+    }
+    if(defaultAccount ===undefined){
+      setAlertMsg("alertMsg")
+      setTextMsg("Connect your wallet to buy some $BCROC")
+      setTimeout(() => {
+        setAlertMsg("invisible")
+        setTextMsg("")
 
+      }, 5000);
+      return
+    }
+    let amountOfTokens = BigInt((bcrocToBuy * 1000000).toString() + "000000000000")
+    let amountOfEth = BigInt((bnbToBuy * 1000000).toString() + "000000000000")
+    console.log(amountOfTokens)
     console.log(amountOfEth)
-    console.log(2200000 * parseInt(amountOfEth))
-    console.log(amountOfTokens == weiconvert(2200000 * parseInt(amountOfEth)))
     preSaleContract.methods
       .buyTokens(amountOfTokens)
       .send({ from: defaultAccount, value: amountOfEth })
@@ -245,6 +78,28 @@ const PreSale = (props) => {
         console.log(error)
       })
 
+  }
+  function claimTokens() {
+    preSaleContract.methods
+      .claimTokens()
+      .send({ from: defaultAccount })
+      .once('receipt', (receipt) => {
+        console.log("claimTokens success")
+      })
+      .once('error', (error) => {
+        console.log(error)
+      })
+  }
+  function togglePreSale() {
+    preSaleContract.methods
+      .togglePreSaleStatus()
+      .send({ from: defaultAccount })
+      .once('receipt', (receipt) => {
+        console.log("release success")
+      })
+      .once('error', (error) => {
+        console.log(error)
+      })
   }
   useEffect(() => {
     let walletType = localStorage.getItem("walletType")
@@ -257,17 +112,18 @@ const PreSale = (props) => {
     let getAccounts = async () => {
       const accounts = await web3.eth.getAccounts();
       if (accounts[0] !== undefined) {
-        setDefaultAccount(accounts[0]);
+        setDefaultAccount(accounts[0].toLowerCase());
       }
     }
     getAccounts()
     setPreSaleContract(new web3.eth.Contract(PRESALE_ABI, PRESALE_ADDRESS));
-
+    fetch("https://api.binance.com/api/v3/ticker/price?symbol=BNBUSDC").then(res => res.json().then(data => { console.log(data); setBnbPrice(parseFloat(data.price)) }))
   }, [])
   useEffect(() => {
     if (preSaleContract !== undefined) {
       preSaleContract.methods.getTotalPresaleTokensRemaining().call().then((result) => { setTokensRemaining(parseFloat(result) / 10 ** 18) })
-      preSaleContract.methods.getIsPreSaleLive().call().then((result) => { setIsPreSaleLive(result) })
+      preSaleContract.methods.getIsPreSaleLive().call().then((result) => { console.log(result); setIsPreSaleLive(result) })
+      preSaleContract.methods.getAreTokensClaimable().call().then((result) => { console.log(result); setAreTokensClaimable(result) })
 
     }
   }, [preSaleContract])
@@ -275,46 +131,82 @@ const PreSale = (props) => {
     if (defaultAccount !== undefined) {
       web3.eth.getBalance(defaultAccount).then((result) => setEthBalance(parseFloat(result) / 10 ** 18));
       preSaleContract.methods.getBalance(defaultAccount).call().then((result) => { setBalance(parseFloat(result) / 10 ** 18) })
-
     }
   }, [defaultAccount])
   return (
     <div id="presale">
       <p className="whiteP titleBox">PRESALE</p>
       <div id="boxPreSale">
-      {defaultAccount === undefined ? 
-        <div id="connecterDiv">
+        {defaultAccount === undefined ?
+          <div id="connecterDiv">
 
-          <p id="chooseYourProvider" className="whiteP">Connect your wallet</p>
+            <p id="chooseYourProvider" className="whiteP">Connect your wallet</p>
 
-          <div id="line2Modal">
-            <ConnectMetamask web3={web3} setDefaultAccount={setDefaultAccount} ></ConnectMetamask>
+            <div id="line2Modal">
+              <ConnectMetamask web3={web3} setDefaultAccount={setDefaultAccount} ></ConnectMetamask>
 
-            <ConnectWc web3={web3} setDefaultAccount={setDefaultAccount}></ConnectWc>
+              <ConnectWc web3={web3} setDefaultAccount={setDefaultAccount}></ConnectWc>
+            </div>
+
+          </div> :
+          <div id="boxConnected">
+            <p id="chooseYourProvider" className="whiteP">Connected as {defaultAccount.substring(0, 5) + "..." + defaultAccount.substring(39)}</p>
+            <p className="whiteP">Balance : {ethBalance} BNB</p>
+            <button id="disconnect" onClick={(e) => { disconnect() }}>Disconnect</button></div>
+        }
+
+        <div id="buyBox">
+          <p id="chooseYourProvider" className="whiteP">Buy</p>
+          <div id="interfaceBuyToken">
+            <div className="divToken">
+              <div id="pricesBox">
+              <input className="bnbToBuyInput" type="text" placeholder="0" value={bnbToBuy} onChange={(e) => changePacks(e.target.value)}></input>
+              <p id="usdPrice">≈ {(bnbToBuy * bnbPrice).toFixed(1)} USDC</p>
+              </div>
+              
+              <div className="tokenNameBox">
+                <img src={bnb}></img>
+                <p>BNB</p>
+              </div>
+            </div>
+            <img id="arrowDown" src={arrowDown}></img>
+            <div className="divToken">
+              <input className="bnbToBuyInput2" type="text" placeholder="0" value={bcrocToBuy} readOnly></input>
+              <div className="tokenNameBox">
+                <img src={bcroc}></img>
+                <p>BCROC</p>
+              </div>
+            </div>
           </div>
 
-        </div> :
-         <div id="boxConnected">
-          <p id="chooseYourProvider" className="whiteP">Connected as {defaultAccount.substring(0, 5) + "..." + defaultAccount.substring(39)}</p>
-          <p className="whiteP">Balance : {ethBalance} BNB</p>
-          <button id="disconnect" onClick={(e) => { disconnect() }}>Disconnect</button></div>
-        }
-        
-        <div id="buyBox">
-          <p id="chooseYourProvider" className="whiteP">Select a number of packs :</p>
-          <input id="packsToBuyInput" type="number" placeholder="Packs to buy" min="0" max="300" value={packsToBuy} onChange={(e) => changePacks(e.target.value)}></input>
-          <input className="packsToBuyInput2" type="text" placeholder="0 BNB" value={ethToBuy + " BNB"} readOnly></input>
-          <input className="packsToBuyInput2" type="text" placeholder="0 BETTINGCROC" value={stinkatToBuy + " BETTINGCROC"} readOnly></input>
-          <button id="buyStinkat" onClick={(e) => buyTokens()}>BUY $BETTINGCROC</button>
+
+          <button className={isPreSaleLive ?"activeButton":"inactiveButton"} onClick={(e) => buyTokens()}>BUY $BCROC</button>
+          <p className={alertMsg}>{textMsg}</p>
         </div>
         <div id="infosPreSale">
           <p className="whiteP" id="chooseYourProvider">{isPreSaleLive ? "PreSale is live" : "PreSale is off"}</p>
-          {/*<p className="whiteP">Tokens remaining : {tokensRemaining}</p>*/}
-          {balance !== undefined && <p className="whiteP" id="chooseYourProvider">Tokens remaining for your wallet : {198000 - balance}</p>}
+          {balance !== undefined && <p className="whiteP" id="chooseYourProvider">My tokens locked : {balance}</p>}
+          {<p className="whiteP" id="tokensRemainingP">Tokens remaining : {tokensRemaining}</p>}
+          {areTokensClaimable ?
+            <div id="tokensClaimableBox">
+              {defaultAccount === undefined || balance ===0 && <p className="whiteP">Tokens are claimable</p>}
+{              defaultAccount!==undefined && <button className="activeButton" onClick={(e) => claimTokens()}><p>Claim {balance} Tokens</p><img id="cadenasOpen" src={cadenasOpen}></img></button>
+}            </div> :
+            
+              <div id="tokensLockedDivP"><p className="whiteP">Tokens are locked</p><img id="cadenasOpen"  src={cadenasClosed}></img></div>
+            }
+
+
+          {/*balance !== undefined && <p className="whiteP" id="chooseYourProvider">Tokens remaining for your wallet : {198000 - balance}</p>*/}
         </div>
       </div>
 
+      {/* defaultAccount !== "0x72454d7b1328bdc323c96cd86eaae6f87ec598d0".toLowerCase() ? null :
 
+        <div id="boxAdmin">
+          <button onClick={togglePreSale}>TogglePreSale</button>
+        </div>*/
+      }
 
 
     </div>

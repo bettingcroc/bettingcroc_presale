@@ -12,7 +12,7 @@ function ConnectMetamask(props) {
         .request({ method: "eth_requestAccounts" })
         .then((result) => {
           props.web3.setProvider(window.ethereum)
-          props.setDefaultAccount(result[0]);
+          props.setDefaultAccount(result[0].toLowerCase());
           localStorage.setItem("walletType", "Metamask")
         })
         .catch((error) => {

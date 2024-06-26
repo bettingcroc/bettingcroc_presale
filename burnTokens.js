@@ -168,7 +168,7 @@ const PRESALE_ABI = [
       "name": "token",
       "outputs": [
         {
-          "internalType": "contract ISTINKAT",
+          "internalType": "contract IBCROC",
           "name": "",
           "type": "address"
         }

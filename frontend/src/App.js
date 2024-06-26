@@ -25,18 +25,19 @@ function App() {
   return (
     <div className="App">
       <div id="topBar">
-        <img id="logoTopBar" src={logo}></img>
+        <div className="boxTopBar">
+          <img id="logoTopBar" src={logo}></img></div>
         <div id='linksNavBar'>
-          <a className='linkNavBar' href='#about'>ABOUT</a>
           <a className='linkNavBar' href='#tokenomics2'>TOKENOMICS</a>
           <a className='linkNavBar' href='https://twitter.com/bettingcroc'>TWITTER</a>
-          <a className='linkNavBar' href='https://t.me/'>TELEGRAM</a>
+          <a className='linkNavBar' href='https://t.me/bettingcroc'>TELEGRAM</a>
         </div>
-        <div id='timerDiv'>
-          <p className="timerP">PRESALE IS LIVE</p>
+        <div className="boxTopBar" id='boxTopBarAbout'>        <a id='aboutLink' href='https://bettingcroc.com'>ABOUT</a>
         </div>
+
         <button id='hamburger' onClick={toggleMenuMobile}><img id='hamburgerImg' src={hamburger}></img></button>
       </div>
+
       <div id="box1">
         <p id="text1" className='acetone'>BETTINGCROC</p>
 
@@ -59,7 +60,7 @@ function App() {
           <p className='titleBox whiteP'>ROADMAP</p>
           <div className='lineHowToBuy'>
             <p className='numberHTB'>11/04</p>
-            <p className='howToBuyP'>PRESALE AT 02:00 PM GMT (14:00 GMT) on bettingcroc.xyz : 4,400,000 tokens available for 72 hours. Get 660 $BETTINGCROC for 0.0003 BNB. Max 198,000 tokens per wallet. Unsold tokens will be burned.</p>
+            <p className='howToBuyP'>PRESALE AT 02:00 PM GMT (14:00 GMT) on bettingcroc.xyz : 4,400,000 tokens available for 72 hours. Get 660 $BCROC for 0.0003 BNB. Max 198,000 tokens per wallet. Unsold tokens will be burned.</p>
           </div>
           <div className='lineHowToBuy'>
             <p className='numberHTB'>16/04</p>
@@ -76,21 +77,21 @@ function App() {
         <div id="tokenomics2">
           <p className='titleBox whiteP'>TOKENOMICS</p>
           <div id='tokenBox'>
-            <div id='tokenBox2'>
-              <div className='tokenP'>
-                <p className='tokenP1'>10M</p>
-                <p className='tokenP2'>TOTAL SUPPLY</p>
-              </div>
-              <div className='tokenP'>
-                <p className='tokenP1'>ZERO</p>
-                <p className='tokenP2'>TAXES</p>
-              </div>
-              <div className='tokenP'>
-                <p className='tokenP1'>100%</p>
-                <p className='tokenP2'>SAFU. LP Locked, CA renounced.</p>
-              </div>
-            </div>
+           
             <img id='katVert' src={crocodileLeft}></img>
+            <div id='tokenBox2'>
+              <p className="whiteP" id="totalSupplyP">Total supply : 3,000,000,000</p>
+              <div className="tokenomicsLine"><div className="legendChart" id="preSaleColor"></div><p className="whiteP">PreSale : 10 %</p></div>
+              <div className="tokenomicsLine"><div className="legendChart" id="publicSaleColor"></div><p className="whiteP">Public Sale : 33.3 %</p></div>
+              <div className="tokenomicsLine"><div className="legendChart" id="treasuryColor"></div><p className="whiteP">Treasury : 14 %</p></div>
+              <div className="tokenomicsLine"><div className="legendChart" id="foundersColor"></div><p className="whiteP">Founders : 10 %</p></div>
+              <div className="tokenomicsLine"><div className="legendChart" id="developmentColor"></div><p className="whiteP">Development : 10 %</p></div>
+              <div className="tokenomicsLine"><div className="legendChart" id="marketingColor"></div><p className="whiteP">Marketing : 10 %</p></div>
+              <div className="tokenomicsLine"><div className="legendChart" id="partnersColor"></div><p className="whiteP">KOLs and Partners : 4 %</p></div>
+              <div className="tokenomicsLine"><div className="legendChart" id="airdropColor"></div><p className="whiteP">Airdrop : 3 %</p></div>
+              <div className="tokenomicsLine"><div className="legendChart" id="liquidityColor"></div><p className="whiteP">Liquidity : 5.7 %</p></div>
+
+            </div>
             <PieChart></PieChart>
 
           </div>
@@ -133,10 +134,10 @@ function App() {
           </div>
         </div>
       </RevealOnScroll>
-{<div id="wrapBG">     <img src={home} id="landingBackground"></img></div>
-}      <div id="overlay"></div>
+      {<div id="wrapBG">     <img src={home} id="landingBackground"></img></div>
+      }      <div id="overlay"></div>
       <div id='menuMobile' className={menuMobile}>
-        <a className='linkNavBar whiteP' href='#about' onClick={toggleMenuMobile}>ABOUT</a>
+        <a className='linkNavBar whiteP' href='https://bettingcroc.com' onClick={toggleMenuMobile}>ABOUT</a>
         <a className='linkNavBar whiteP' href='#tokenomics' onClick={toggleMenuMobile}>TOKENOMICS</a>
         <a className='linkNavBar whiteP' href='https://twitter.com/bettingcroc'>TWITTER</a>
         <a className='linkNavBar whiteP' href='https://t.me/bettingcroc'>TELEGRAM</a>

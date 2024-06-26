@@ -21,6 +21,11 @@ a {
   src: url('./Poppins-Regular.ttf');
 }
 
+@font-face {
+  font-family: PoppinsBold;
+  src: url('./Poppins-Bold.ttf');
+}
+
 
 @font-face {
   font-family: Acetone;
@@ -41,9 +46,12 @@ a {
 #tokenomics {
   text-shadow: 0 0 6px rgba(202, 228, 225, .92), 0 0 30px rgba(202, 228, 225, .34), 0 0 12px rgba(30, 132, 242, .52), 0 0 21px rgba(30, 132, 242, .92), 0 0 34px rgba(30, 132, 242, .78), 0 0 54px rgba(30, 132, 242, .92);
 }
-#until{
+
+#until {
   font-size: 70px;
+  font-family: Poppins;
 }
+
 #topBar {
   position: sticky;
   top: 0px;
@@ -57,17 +65,39 @@ a {
   z-index: 50;
 }
 
+#aboutLink {
+  color: #E1e954 !important;
+  padding: 10px 20px 7px 20px;
+  border: 1px solid #e1e954;
+  border-radius: 100px;
+  font-size: 20px;
+  font-family: PoppinsBold;
+}
+
+.boxTopBar {
+  flex-grow: 1;
+  flex-basis: 0;
+  height: 100%;
+}
+
+#boxTopBarAbout {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 #linksNavBar {
   display: flex;
   flex-direction: row;
   font-family: Poppins;
   gap: 30px;
-  margin: auto;
 }
 
 .linkNavBar {
-  font-size: 30px;
+  font-size: 20px;
   font-weight: 700;
+  font-family: Poppins;
 }
 
 .acetone {
@@ -114,7 +144,8 @@ canvas {
   height: 26vw;
   width: 26vw;
 }
-#wrapBG{
+
+#wrapBG {
   position: fixed;
   top: 0;
   left: 0;
@@ -127,6 +158,7 @@ canvas {
   z-index: 15;
 
 }
+
 #landingBackground {
   display: block;
   margin: auto;
@@ -205,12 +237,13 @@ canvas {
 #miniBox4 {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  width: 64vw;
+  justify-content: center;
+  gap: 60px;
   align-items: center;
   background: rgb(0, 255, 255, 0.2);
-  padding: 20px 0px;
+  padding: 30px 30px;
   border-radius: 16px;
+  width: 80vw;
 }
 
 #tokenomics2 {
@@ -248,9 +281,9 @@ canvas {
   left: 0px;
   width: 100vw;
   height: 100vh;
-  background: rgb(2,41,7);
-  background: linear-gradient(180deg, rgba(2,41,7,1) 0%, rgba(0,0,0,1) 100%);
-    z-index: 10;
+  background: rgb(2, 41, 7);
+  background: linear-gradient(180deg, rgba(2, 41, 7, 1) 0%, rgba(0, 0, 0, 1) 100%);
+  z-index: 10;
 }
 
 .titleBox {
@@ -275,7 +308,7 @@ canvas {
 .howToBuyP {
   font-size: 30px;
   background-color: rgba(0, 10, 41, 0.5);
-  font-family: Rubik;
+  font-family: Poppins;
   padding: 24px;
   border-radius: 16px;
   color: white;
@@ -294,7 +327,7 @@ canvas {
 
 .numberHTB {
   font-size: 100px;
-  font-family: LemonMilk;
+  font-family: Unbounded;
   color: white;
 }
 
@@ -311,7 +344,8 @@ canvas {
   color: white;
   border: 5px dashed gold;
   padding: 20px;
-  font-size: 30px;
+  font-size: 20px;
+  font-family: Poppins;
 }
 
 #miniBox5 {
@@ -342,7 +376,7 @@ canvas {
 
 .linkJoinUs {
   font-size: 50px;
-  font-family: LemonMilk;
+  font-family: Poppins;
   color: rgb(26, 43, 89);
   background-color: rgb(255, 255, 255, 0.7);
   padding: 24px;
@@ -355,19 +389,86 @@ canvas {
   height: 26vw;
 }
 
+#presale {
+  font-family: Poppins;
+}
+
+#tokenomics2 {
+  font-family: Poppins;
+}
+
 #tokenBox {
   display: flex;
   flex-direction: row;
-  gap: 100px;
+  justify-content: space-between;
   align-items: center;
   background-color: rgba(0, 10, 41, 0.8);
   border-radius: 24px;
   padding: 60px;
+  width: 80vw;
 }
 
 #tokenBox2 {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+
+.tokenomicsLine {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.legendChart {
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+}
+
+#preSaleColor {
+  background-color: #538fff;
+
+}
+
+#publicSaleColor {
+  background-color: #b431e6;
+
+}
+
+#treasuryColor {
+  background-color: #ff5b58;
+
+}
+
+#foundersColor {
+  background-color: #f7ed65;
+
+}
+
+#developmentColor {
+  background-color: #28d2ab;
+
+}
+
+#marketingColor {
+  background-color: #fca207;
+
+}
+
+#partnersColor {
+  background-color: #268189;
+
+}
+
+#airdropColor {
+  background-color: #f6ccf9;
+
+}
+
+#liquidityColor {
+  background-color: #2d1a77;
+
 }
 
 .tokenP {
@@ -399,14 +500,22 @@ canvas {
 #cadenas {
   height: 300px;
 }
+#totalSupplyP{
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+
 @media screen and (min-width: 2200px) {
-  #text1{
+  #text1 {
     font-size: 180px;
   }
-  #box2{
+
+  #box2 {
     font-size: 70px;
   }
 }
+
 @media screen and (max-width: 1500px) {
   .timerP {
     font-size: 10px;
@@ -468,6 +577,18 @@ canvas {
 }
 
 @media screen and (max-width: 1080px) {
+  canvas {
+    height: 90% !important;
+    width: 90% !important;
+  
+  }
+  #landingBackground {
+    overflow: hidden;
+    max-width: unset;
+  }
+  #boxTopBarAbout{
+    display: none;
+  }
   #hamburger {
     display: unset;
     background: transparent;
@@ -504,6 +625,7 @@ canvas {
     flex-direction: column;
     width: 100%;
     padding: 10px;
+    gap: 40px;
   }
 
   #box1 {
@@ -643,6 +765,9 @@ canvas {
   #chart {
     width: 350px;
     height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
 
