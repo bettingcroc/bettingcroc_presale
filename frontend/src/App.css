@@ -505,7 +505,9 @@ canvas {
   margin-bottom: 10px;
 }
 
-
+.Toastify{
+  z-index: 100;
+}
 @media screen and (min-width: 2200px) {
   #text1 {
     font-size: 180px;

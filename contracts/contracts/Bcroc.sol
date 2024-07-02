@@ -14,53 +14,7 @@ abstract contract Context {
 
 pragma solidity ^0.8.0;
 
-abstract contract Ownable is Context {
-    address private _owner;
-
-    event OwnershipTransferred(
-        address indexed previousOwner,
-        address indexed newOwner
-    );
-
-    constructor() {
-        _transferOwnership(_msgSender());
-    }
-
-    modifier onlyOwner() {
-        _checkOwner();
-        _;
-    }
-
-    function owner() public view virtual returns (address) {
-        return _owner;
-    }
-
-    function _checkOwner() internal view virtual {
-        require(owner() == _msgSender(), "Ownable: caller is not the owner");
-    }
-
-    function renounceOwnership() public virtual onlyOwner {
-        _transferOwnership(address(0));
-    }
-
-    function transferOwnership(address newOwner) public virtual onlyOwner {
-        require(
-            newOwner != address(0),
-            "Ownable: new owner is the zero address"
-        );
-        _transferOwnership(newOwner);
-    }
-
-    function _transferOwnership(address newOwner) internal virtual {
-        address oldOwner = _owner;
-        _owner = newOwner;
-        emit OwnershipTransferred(oldOwner, newOwner);
-    }
-}
-
-pragma solidity ^0.8.0;
-
-interface IERC20 {
+contract ERC20 is Context {
     event Transfer(address indexed from, address indexed to, uint256 value);
 
     event Approval(
@@ -69,60 +23,23 @@ interface IERC20 {
         uint256 value
     );
 
-    function totalSupply() external view returns (uint256);
-
-    function balanceOf(address account) external view returns (uint256);
-
-    function transfer(address to, uint256 amount) external returns (bool);
-
-    function allowance(
-        address owner,
-        address spender
-    ) external view returns (uint256);
-
-    function approve(address spender, uint256 amount) external returns (bool);
-
-    function transferFrom(
-        address from,
-        address to,
-        uint256 amount
-    ) external returns (bool);
-}
-
-pragma solidity ^0.8.0;
-
-interface IERC20Metadata is IERC20 {
-    function name() external view returns (string memory);
-
-    function symbol() external view returns (string memory);
-
-    function decimals() external view returns (uint8);
-}
-
-pragma solidity ^0.8.0;
-
-contract ERC20 is Context, IERC20, IERC20Metadata {
-    address public dev;
-
     mapping(address => uint256) private _balances;
 
     mapping(address => mapping(address => uint256)) private _allowances;
 
     uint256 private _totalSupply;
-
     string private _name;
     string private _symbol;
 
     constructor(string memory name_, string memory symbol_) {
         _name = name_;
         _symbol = symbol_;
-        dev = msg.sender;
     }
 
     /**
      * @dev Returns the name of the token.
      */
-    function name() public view virtual override returns (string memory) {
+    function name() public view virtual returns (string memory) {
         return _name;
     }
 
@@ -130,18 +47,18 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      * @dev Returns the symbol of the token, usually a shorter version of the
      * name.
      */
-    function symbol() public view virtual override returns (string memory) {
+    function symbol() public view virtual returns (string memory) {
         return _symbol;
     }
 
-    function decimals() public view virtual override returns (uint8) {
+    function decimals() public view virtual returns (uint8) {
         return 18;
     }
 
     /**
      * @dev See {IERC20-totalSupply}.
      */
-    function totalSupply() public view virtual override returns (uint256) {
+    function totalSupply() public view virtual returns (uint256) {
         return _totalSupply;
     }
 
@@ -150,7 +67,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
      */
     function balanceOf(
         address account
-    ) public view virtual override returns (uint256) {
+    ) public view virtual returns (uint256) {
         return _balances[account];
     }
 
@@ -165,7 +82,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     function transfer(
         address to,
         uint256 amount
-    ) public virtual override returns (bool) {
+    ) public virtual returns (bool) {
         address owner = _msgSender();
         _transfer(owner, to, amount);
         return true;
@@ -177,14 +94,14 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     function allowance(
         address owner,
         address spender
-    ) public view virtual override returns (uint256) {
+    ) public view virtual returns (uint256) {
         return _allowances[owner][spender];
     }
 
     function approve(
         address spender,
         uint256 amount
-    ) public virtual override returns (bool) {
+    ) public virtual returns (bool) {
         address owner = _msgSender();
         _approve(owner, spender, amount);
         return true;
@@ -194,7 +111,7 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
         address from,
         address to,
         uint256 amount
-    ) public virtual override returns (bool) {
+    ) public virtual returns (bool) {
         address spender = _msgSender();
         _spendAllowance(from, spender, amount);
         _transfer(from, to, amount);
@@ -234,9 +151,6 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
     ) internal virtual {
         require(from != address(0), "ERC20: transfer from the zero address");
         require(to != address(0), "ERC20: transfer to the zero address");
-
-        _beforeTokenTransfer(from, to, amount);
-
         uint256 fromBalance = _balances[from];
         require(
             fromBalance >= amount,
@@ -251,13 +165,11 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
 
         emit Transfer(from, to, amount);
 
-        _afterTokenTransfer(from, to, amount);
     }
 
     function _mint(address account, uint256 amount) internal virtual {
         require(account != address(0), "ERC20: mint to the zero address");
 
-        _beforeTokenTransfer(address(0), account, amount);
 
         _totalSupply += amount;
         unchecked {
@@ -266,13 +178,11 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
         }
         emit Transfer(address(0), account, amount);
 
-        _afterTokenTransfer(address(0), account, amount);
     }
 
     function _burn(address account, uint256 amount) internal virtual {
         require(account != address(0), "ERC20: burn from the zero address");
 
-        _beforeTokenTransfer(account, address(0), amount);
 
         uint256 accountBalance = _balances[account];
         require(accountBalance >= amount, "ERC20: burn amount exceeds balance");
@@ -284,7 +194,6 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
 
         emit Transfer(account, address(0), amount);
 
-        _afterTokenTransfer(account, address(0), amount);
     }
 
     function _approve(
@@ -316,17 +225,6 @@ contract ERC20 is Context, IERC20, IERC20Metadata {
         }
     }
 
-    function _beforeTokenTransfer(
-        address from,
-        address to,
-        uint256 amount
-    ) internal virtual {}
-
-    function _afterTokenTransfer(
-        address from,
-        address to,
-        uint256 amount
-    ) internal virtual {}
 }
 
 pragma solidity ^0.8.0;
@@ -344,10 +242,10 @@ abstract contract ERC20Burnable is Context, ERC20 {
 
 pragma solidity ^0.8.0;
 
-contract Bettingcroc is ERC20, ERC20Burnable, Ownable {
+contract BettingCrocToken is ERC20, ERC20Burnable {
     uint256 private constant INITIAL_SUPPLY = 3000000000 * 10 ** 18;
 
-    constructor() ERC20("BettingCroc", "BCROC") {
+    constructor() ERC20("BettingCroc Token", "BCROC") {
         _mint(msg.sender, INITIAL_SUPPLY);
     }
 

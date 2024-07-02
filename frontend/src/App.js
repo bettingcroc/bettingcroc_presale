@@ -7,6 +7,8 @@ import PreSale from './components/PreSale/PreSale';
 import logo from "./assets/Logo-03.png"
 import home from "./assets/home.png"
 import crocodileLeft from "./assets/crocodileLeft.png"
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [menuMobile, setMenuMobile] = useState("closed")
@@ -32,7 +34,8 @@ function App() {
           <a className='linkNavBar' href='https://twitter.com/bettingcroc'>TWITTER</a>
           <a className='linkNavBar' href='https://t.me/bettingcroc'>TELEGRAM</a>
         </div>
-        <div className="boxTopBar" id='boxTopBarAbout'>        <a id='aboutLink' href='https://bettingcroc.com'>ABOUT</a>
+        <div className="boxTopBar" id='boxTopBarAbout'>
+          <a id='aboutLink' href='https://bettingcroc.com'>ABOUT</a>
         </div>
 
         <button id='hamburger' onClick={toggleMenuMobile}><img id='hamburgerImg' src={hamburger}></img></button>
@@ -52,7 +55,7 @@ function App() {
         <p className="whiteP titleBox">PRESALE</p>
         <img src={cadenas} id='cadenas'></img>
         </div>*/
-        <PreSale></PreSale>
+        <PreSale toast={toast}></PreSale>
       }
       <RevealOnScroll>
 
@@ -77,7 +80,7 @@ function App() {
         <div id="tokenomics2">
           <p className='titleBox whiteP'>TOKENOMICS</p>
           <div id='tokenBox'>
-           
+
             <img id='katVert' src={crocodileLeft}></img>
             <div id='tokenBox2'>
               <p className="whiteP" id="totalSupplyP">Total supply : 3,000,000,000</p>
@@ -116,9 +119,9 @@ function App() {
             <p className='testMiniBox4'>
 
               The Base Chain's ecosystem is rapidly evolving, witnessing the development of numerous
-              projects and applications. This dynamic expansion provides a solid foundation for Bettingcroc's
+              projects and applications. This dynamic expansion provides a solid foundation for BettingCroc's
               success, enabling the builders to tap into the resources and expertise of other projects. As the
-              Base Chain continues to grow, Bettingcroc's potential grows as well.            </p>
+              Base Chain continues to grow, BettingCroc's potential grows as well.            </p>
           </div>
         </div>
       </RevealOnScroll>
@@ -142,6 +145,8 @@ function App() {
         <a className='linkNavBar whiteP' href='https://twitter.com/bettingcroc'>TWITTER</a>
         <a className='linkNavBar whiteP' href='https://t.me/bettingcroc'>TELEGRAM</a>
       </div>
+      <ToastContainer autoClose={false}></ToastContainer>
+
     </div>
   );
 }

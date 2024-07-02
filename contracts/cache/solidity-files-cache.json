@@ -75,57 +75,9 @@
         "IERC20"
       ]
     },
-    "/home/achille/prog/bettingcroc/presale/contracts/contracts/Bcroc.sol": {
-      "lastModificationDate": 1718154952164,
-      "contentHash": "7f32c52e7a21dcc7b56ae5fa40173d0c",
-      "sourceName": "contracts/Bcroc.sol",
-      "solcConfig": {
-        "version": "0.8.24",
-        "settings": {
-          "evmVersion": "paris",
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [],
-      "versionPragmas": [
-        "^0.8.0",
-        "^0.8.0",
-        "^0.8.0",
-        "^0.8.0",
-        "^0.8.0",
-        "^0.8.0",
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "Bettingcroc",
-        "Context",
-        "ERC20",
-        "ERC20Burnable",
-        "IERC20",
-        "IERC20Metadata",
-        "Ownable"
-      ]
-    },
     "/home/achille/prog/bettingcroc/presale/contracts/contracts/Presale.sol": {
-      "lastModificationDate": 1719292728354,
-      "contentHash": "9be8e13ad425c41a98ef31b56cf79c81",
+      "lastModificationDate": 1719865723438,
+      "contentHash": "7df6f811b47c6eaf6d71fcd4595addd5",
       "sourceName": "contracts/Presale.sol",
       "solcConfig": {
         "version": "0.8.24",
@@ -156,8 +108,8 @@
         "^0.8.0"
       ],
       "artifacts": [
-        "IBCROC",
-        "Presale"
+        "BettingCrocPresale",
+        "IBCROC"
       ]
     },
     "/home/achille/prog/bettingcroc/presale/contracts/contracts/PresaleVesting.sol": {
@@ -195,6 +147,96 @@
       "artifacts": [
         "IBCROC",
         "PresaleVesting"
+      ]
+    },
+    "/home/achille/prog/bettingcroc/presale/contracts/contracts/Bcroc.sol": {
+      "lastModificationDate": 1719810487029,
+      "contentHash": "209075f8346d7d2a41e4279427057fc5",
+      "sourceName": "contracts/Bcroc.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0",
+        "^0.8.0",
+        "^0.8.0",
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "BettingCrocToken",
+        "Context",
+        "ERC20",
+        "ERC20Burnable"
+      ]
+    },
+    "/home/achille/prog/bettingcroc/presale/contracts/contracts/BcrocLegacy.sol": {
+      "lastModificationDate": 1719810510461,
+      "contentHash": "3753cebffa9071b78419705ed2cf1417",
+      "sourceName": "contracts/BcrocLegacy.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0",
+        "^0.8.0",
+        "^0.8.0",
+        "^0.8.0",
+        "^0.8.0",
+        "^0.8.0",
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "BettingCrocLegacy",
+        "Context",
+        "ERC20",
+        "ERC20Burnable",
+        "IERC20",
+        "IERC20Metadata",
+        "Ownable"
       ]
     }
   }

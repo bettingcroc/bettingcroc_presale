@@ -11,10 +11,10 @@ async function main() {
 
     //const lockedAmount = hre.ethers.utils.parseEther("0.001");
 
-    const Bettingcroc = await hre.ethers.getContractFactory("Bettingcroc");
-    const bettingcroc = await Bettingcroc.deploy();
+    const BettingCroc = await hre.ethers.getContractFactory("BettingCrocToken");
+    const bettingcroc = await BettingCroc.deploy();
     console.log(
-        `Bettingcroc deployed to ${bettingcroc.target}`
+        `BettingCroc deployed to ${bettingcroc.target}`
     );
 }
 

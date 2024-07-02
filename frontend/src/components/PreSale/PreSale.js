@@ -15,6 +15,7 @@ import "./PreSale.css"
 import cadenasClosed from "../../assets/cadenas.png"
 import cadenasOpen from "../../assets/cadenas-ouvert.png"
 
+
 import { PRESALE_ABI, PRESALE_ADDRESS } from "../../config.js";
 const DEFAULT_ETH_JSONRPC_URL = "https://data-seed-prebsc-1-s1.bnbchain.org:8545"
 
@@ -25,7 +26,7 @@ const PreSale = (props) => {
   const [preSaleContract, setPreSaleContract] = useState()
   const [tokensRemaining, setTokensRemaining] = useState()
   const [balance, setBalance] = useState()
-  const [bcrocToBuy, setBcrocToBuy] = useState(20000)
+  const [bcrocToBuy, setBcrocToBuy] = useState(60000)
   const [bnbToBuy, setBnbToBuy] = useState(0.05)
   const [isPreSaleLive, setIsPreSaleLive] = useState()
   const [tokensTotal, setTokensTotal] = useState(0)
@@ -41,8 +42,15 @@ const PreSale = (props) => {
   }
   function weiconvert(number) { return BigInt(number * decimalsConverter(10)); }
   function changePacks(packs) {
+    if (getDecimalPlaces(packs)>3){
+      return
+    }
     setBnbToBuy(packs)
-    setBcrocToBuy(400000 * packs)
+    setBcrocToBuy(Math.round(1200000 * packs))
+  }
+  function getDecimalPlaces(number) {
+    const decimalPart = String(number).split('.')[1];
+    return decimalPart ? decimalPart.length : 0;
   }
   function disconnect() {
     console.log("disconnecting wallet")
@@ -51,10 +59,10 @@ const PreSale = (props) => {
     localStorage.clear();
   }
   function buyTokens() {
-    if(!isPreSaleLive ){
+    if (!isPreSaleLive) {
       return
     }
-    if(defaultAccount ===undefined){
+    if (defaultAccount === undefined) {
       setAlertMsg("alertMsg")
       setTextMsg("Connect your wallet to buy some $BCROC")
       setTimeout(() => {
@@ -68,16 +76,28 @@ const PreSale = (props) => {
     let amountOfEth = BigInt((bnbToBuy * 1000000).toString() + "000000000000")
     console.log(amountOfTokens)
     console.log(amountOfEth)
+    let approveToast = props.toast.loading("Buying "+bcrocToBuy+" $BCROC", { closeButton: true , position:"top-center"})
+    try{
     preSaleContract.methods
       .buyTokens(amountOfTokens)
       .send({ from: defaultAccount, value: amountOfEth })
       .once('receipt', (receipt) => {
+        props.toast.update(approveToast, { render: bcrocToBuy+" $BCROC are yours ! 🐊", type: "success", isLoading: false, closeButton: true, autoClose: 7000 });
+
         console.log("buy success")
+        updateBcrocBalance()
       })
       .once('error', (error) => {
         console.log(error)
-      })
+        props.toast.update(approveToast, { render: "Error " + error.code, type: "error", isLoading: false, closeButton: true, autoClose: 7000 });
 
+      })
+      .catch(e =>{
+        console.log(e)
+        props.toast.update(approveToast, { render: "Something went wrong.. ", type: "error", isLoading: false, closeButton: true, autoClose: 7000 });
+
+      })
+} catch(e){console.log(e)}
   }
   function claimTokens() {
     preSaleContract.methods
@@ -85,6 +105,7 @@ const PreSale = (props) => {
       .send({ from: defaultAccount })
       .once('receipt', (receipt) => {
         console.log("claimTokens success")
+        updateBcrocBalance()
       })
       .once('error', (error) => {
         console.log(error)
@@ -100,6 +121,10 @@ const PreSale = (props) => {
       .once('error', (error) => {
         console.log(error)
       })
+  }
+  function updateBcrocBalance(){
+    preSaleContract.methods.getBalance(defaultAccount).call().then((result) => { setBalance(Math.round(parseFloat(result) / 10 ** 18)) })
+
   }
   useEffect(() => {
     let walletType = localStorage.getItem("walletType")
@@ -121,7 +146,7 @@ const PreSale = (props) => {
   }, [])
   useEffect(() => {
     if (preSaleContract !== undefined) {
-      preSaleContract.methods.getTotalPresaleTokensRemaining().call().then((result) => { setTokensRemaining(parseFloat(result) / 10 ** 18) })
+      preSaleContract.methods.getTotalPresaleTokensRemaining().call().then((result) => { setTokensRemaining(Math.round(parseFloat(result) / 10 ** 18) )})
       preSaleContract.methods.getIsPreSaleLive().call().then((result) => { console.log(result); setIsPreSaleLive(result) })
       preSaleContract.methods.getAreTokensClaimable().call().then((result) => { console.log(result); setAreTokensClaimable(result) })
 
@@ -130,7 +155,7 @@ const PreSale = (props) => {
   useEffect(() => {
     if (defaultAccount !== undefined) {
       web3.eth.getBalance(defaultAccount).then((result) => setEthBalance(parseFloat(result) / 10 ** 18));
-      preSaleContract.methods.getBalance(defaultAccount).call().then((result) => { setBalance(parseFloat(result) / 10 ** 18) })
+      updateBcrocBalance()
     }
   }, [defaultAccount])
   return (
@@ -160,10 +185,10 @@ const PreSale = (props) => {
           <div id="interfaceBuyToken">
             <div className="divToken">
               <div id="pricesBox">
-              <input className="bnbToBuyInput" type="text" placeholder="0" value={bnbToBuy} onChange={(e) => changePacks(e.target.value)}></input>
-              <p id="usdPrice">≈ {(bnbToBuy * bnbPrice).toFixed(1)} USDC</p>
+                <input className="bnbToBuyInput" type="text" placeholder="0" value={bnbToBuy} onChange={(e) => changePacks(e.target.value)}></input>
+                <p id="usdPrice">≈ {(bnbToBuy * bnbPrice).toFixed(1)} USDC</p>
               </div>
-              
+
               <div className="tokenNameBox">
                 <img src={bnb}></img>
                 <p>BNB</p>
@@ -180,7 +205,7 @@ const PreSale = (props) => {
           </div>
 
 
-          <button className={isPreSaleLive ?"activeButton":"inactiveButton"} onClick={(e) => buyTokens()}>BUY $BCROC</button>
+          <button className={isPreSaleLive ? "activeButton" : "inactiveButton"} onClick={(e) => buyTokens()}>BUY $BCROC</button>
           <p className={alertMsg}>{textMsg}</p>
         </div>
         <div id="infosPreSale">
@@ -189,12 +214,12 @@ const PreSale = (props) => {
           {<p className="whiteP" id="tokensRemainingP">Tokens remaining : {tokensRemaining}</p>}
           {areTokensClaimable ?
             <div id="tokensClaimableBox">
-              {defaultAccount === undefined || balance ===0 && <p className="whiteP">Tokens are claimable</p>}
-{              defaultAccount!==undefined && <button className="activeButton" onClick={(e) => claimTokens()}><p>Claim {balance} Tokens</p><img id="cadenasOpen" src={cadenasOpen}></img></button>
-}            </div> :
-            
-              <div id="tokensLockedDivP"><p className="whiteP">Tokens are locked</p><img id="cadenasOpen"  src={cadenasClosed}></img></div>
-            }
+              {defaultAccount === undefined || balance === 0 && <p className="whiteP">Tokens are claimable</p>}
+              {defaultAccount !== undefined && <button className="activeButton" onClick={(e) => claimTokens()}><p>Claim {balance} Tokens</p><img id="cadenasOpen" src={cadenasOpen}></img></button>
+              }            </div> :
+
+            <div id="tokensLockedDivP"><p className="whiteP">Tokens are locked</p><img id="cadenasOpen" src={cadenasClosed}></img></div>
+          }
 
 
           {/*balance !== undefined && <p className="whiteP" id="chooseYourProvider">Tokens remaining for your wallet : {198000 - balance}</p>*/}
