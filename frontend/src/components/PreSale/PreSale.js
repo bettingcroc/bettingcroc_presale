@@ -209,17 +209,17 @@ const PreSale = (props) => {
           <p className={alertMsg}>{textMsg}</p>
         </div>
         <div id="infosPreSale">
-          <p className="whiteP" id="chooseYourProvider">{isPreSaleLive ? "PreSale is live" : "PreSale is off"}</p>
-          <p className="whiteP">Presale raise : 250 BNB</p>
-          {balance !== undefined && <p className="whiteP" id="chooseYourProvider">My tokens locked : {balance}</p>}
-          {<p className="whiteP" id="tokensRemainingP">Tokens remaining : {tokensRemaining}</p>}
+          <p className="whiteP rightBoxP" >{isPreSaleLive ? "PreSale is live" : "PreSale is off"}</p>
+          <p className="whiteP rightBoxP" >Presale raise : 250 BNB</p>
+          {balance !== undefined && <p className="whiteP rightBoxP" >My tokens locked : {balance}</p>}
+          {<p className="whiteP rightBoxP" id="tokensRemainingP" >Tokens remaining : {tokensRemaining}</p>}
           {areTokensClaimable ?
             <div id="tokensClaimableBox">
               {defaultAccount === undefined || balance === 0 && <p className="whiteP">Tokens are claimable</p>}
               {defaultAccount !== undefined && <button className="activeButton" onClick={(e) => claimTokens()}><p>Claim {balance} Tokens</p><img id="cadenasOpen" src={cadenasOpen}></img></button>
               }            </div> :
 
-            <div id="tokensLockedDivP"><p className="whiteP">Tokens are locked</p><img id="cadenasOpen" src={cadenasClosed}></img></div>
+            <div id="tokensLockedDivP"><p className="whiteP rightBoxP">Tokens are locked</p><img id="cadenasOpen" src={cadenasClosed}></img></div>
           }
 
 

@@ -226,7 +226,10 @@ input:focus {
     text-overflow: ellipsis;
 }
 
+.rightBoxP{
+    font-size: 20px;
 
+}
 
 #cadenasOpen {
     height: 30px;
@@ -240,9 +243,6 @@ input:focus {
     font-size: 20px;
 }
 
-#tokensRemainingP {
-    font-size: 20px;
-}
 
 #tokensClaimableBox {
     display: flex;
