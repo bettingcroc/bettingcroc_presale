@@ -160,8 +160,8 @@ const PreSale = (props) => {
   }, [defaultAccount])
   return (
     <div id="presale">
-      <p className="whiteP titleBox">PRESALE</p>
-      <div id="boxPreSale">
+{    //  <p className="whiteP titleBox">PRESALE</p>
+}      <div id="boxPreSale">
         {defaultAccount === undefined ?
           <div id="connecterDiv">
 
@@ -210,6 +210,7 @@ const PreSale = (props) => {
         </div>
         <div id="infosPreSale">
           <p className="whiteP" id="chooseYourProvider">{isPreSaleLive ? "PreSale is live" : "PreSale is off"}</p>
+          <p className="whiteP">Presale raise : 250 BNB</p>
           {balance !== undefined && <p className="whiteP" id="chooseYourProvider">My tokens locked : {balance}</p>}
           {<p className="whiteP" id="tokensRemainingP">Tokens remaining : {tokensRemaining}</p>}
           {areTokensClaimable ?
