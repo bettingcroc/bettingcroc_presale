@@ -81,6 +81,7 @@ contract BettingCrocPresale {
         require(msg.sender == owner, "Only the owner can burn tokens");
         require(!isPreSaleLive, "PreSale is live");
         token.burn(token.balanceOf(address(this)));
+        totalPresaleTokensRemaining = 0;
     }
 
     function claimTokens() public {

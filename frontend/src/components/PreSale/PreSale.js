@@ -17,7 +17,7 @@ import cadenasOpen from "../../assets/cadenas-ouvert.png"
 
 
 import { PRESALE_ABI, PRESALE_ADDRESS } from "../../config.js";
-const DEFAULT_ETH_JSONRPC_URL = "https://data-seed-prebsc-1-s1.bnbchain.org:8545"
+const DEFAULT_ETH_JSONRPC_URL = "https://bsc-dataseed.bnbchain.org"
 
 const PreSale = (props) => {
   const [web3, setWeb3] = useState(new Web3(DEFAULT_ETH_JSONRPC_URL))
@@ -146,7 +146,7 @@ const PreSale = (props) => {
   }, [])
   useEffect(() => {
     if (preSaleContract !== undefined) {
-      preSaleContract.methods.getTotalPresaleTokensRemaining().call().then((result) => { setTokensRemaining(Math.round(parseFloat(result) / 10 ** 18) )})
+      preSaleContract.methods.getTotalPresaleTokensRemaining().call().then((result) => { console.log(result);setTokensRemaining(Math.round(parseFloat(result) / 10 ** 18) )})
       preSaleContract.methods.getIsPreSaleLive().call().then((result) => { console.log(result); setIsPreSaleLive(result) })
       preSaleContract.methods.getAreTokensClaimable().call().then((result) => { console.log(result); setAreTokensClaimable(result) })
 

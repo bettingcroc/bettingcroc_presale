@@ -346,6 +346,7 @@ canvas {
   padding: 20px;
   font-size: 20px;
   font-family: Poppins;
+  line-height: 33px;
 }
 
 #miniBox5 {
@@ -500,14 +501,16 @@ canvas {
 #cadenas {
   height: 300px;
 }
-#totalSupplyP{
+
+#totalSupplyP {
   font-size: 22px;
   margin-bottom: 10px;
 }
 
-.Toastify{
+.Toastify {
   z-index: 100;
 }
+
 @media screen and (min-width: 2200px) {
   #text1 {
     font-size: 180px;
@@ -538,6 +541,8 @@ canvas {
 
   .testMiniBox4 {
     font-size: 16px;
+    line-height: 26px;
+    font-weight: 700;
   }
 
   .titleBox {
@@ -582,15 +587,18 @@ canvas {
   canvas {
     height: 90% !important;
     width: 90% !important;
-  
+
   }
+
   #landingBackground {
     overflow: hidden;
     max-width: unset;
   }
-  #boxTopBarAbout{
+
+  #boxTopBarAbout {
     display: none;
   }
+
   #hamburger {
     display: unset;
     background: transparent;
@@ -665,9 +673,6 @@ canvas {
     display: none;
   }
 
-  #miniBox4 {
-    flex-direction: column;
-  }
 
   #joinUsDiv {
     flex-direction: column;
@@ -691,6 +696,9 @@ canvas {
     width: calc(100% - 40px);
     padding: 20px 20px;
     gap: 20px;
+    background: rgba(0, 255, 255, 0.4);
+    flex-direction: column;
+
   }
 
   .testMiniBox4 {

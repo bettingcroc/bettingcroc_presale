@@ -6,11 +6,11 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const DEFAULT_ETH_JSONRPC_URL = "https://bsc-testnet-rpc.publicnode.com"
-const PRESALE_ADDRESS = "0x1d3F02808920A22e549a9021C4bBcFe64f2dCD01"
-const PRESALE_ABI = JSON.parse(fs.readFileSync(__dirname + '/contracts/artifacts/contracts/Presale.sol/Presale.json'))["abi"];
-const PRIVATE_KEY_CREATOR = 'a5f6e0a827cc10fee319802a6a08e1ae0af1329fa69cc9a76e815a7692afcc18'
-const PUBLIC_KEY_CREATOR = "0x72454D7B1328bDc323c96cd86EAAe6f87Ec598d0"
+const DEFAULT_ETH_JSONRPC_URL = "https://bsc-dataseed.bnbchain.org"
+const PRESALE_ADDRESS = "0x8c92F0AD0bA49E3399Fe1D6523a75D9950B18ad4"
+const PRESALE_ABI = JSON.parse(fs.readFileSync(__dirname + '/contracts/artifacts/contracts/Presale.sol/BettingCrocPresale.json'))["abi"];
+const PRIVATE_KEY_CREATOR = 'a45fe19bfd60a077a5e306bfe5d47c991222b4ef7ad09479b45fa5df9fbaa61f'
+const PUBLIC_KEY_CREATOR = "0xf19B84D9a81765FC47F231F9363a4e00A796A585"
 const provider = new HDWalletProvider(PRIVATE_KEY_CREATOR, DEFAULT_ETH_JSONRPC_URL, 0, 10000);
 const web3 = new Web3(provider);
 

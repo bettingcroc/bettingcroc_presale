@@ -57,7 +57,7 @@ function App() {
         </div>*/
         <PreSale toast={toast}></PreSale>
       }
-      <RevealOnScroll>
+      {/*<RevealOnScroll>
 
         <div id="box6">
           <p className='titleBox whiteP'>ROADMAP</p>
@@ -74,7 +74,7 @@ function App() {
             <p className='howToBuyP' id="tokenomics">SPECIAL EVENT : Announcement of a BIG launch. Exclusives rewards for holders.</p>
           </div>
         </div>
-      </RevealOnScroll>
+    </RevealOnScroll>*/}
       <RevealOnScroll  >
 
         <div id="tokenomics2">
@@ -106,22 +106,29 @@ function App() {
       <RevealOnScroll>
 
         <div id="box4">
-          <p className='titleBox whiteP'>WHY BETTINGCROC ?</p>
+          <p className='titleBox whiteP'>WHY $BCROC ?</p>
 
           <div id="miniBox4">
             <p className='testMiniBox4'>
 
-              It's a movement that adopts a different way of thinking about investing, building a strong
-              community that expresses itself through digital currency. $BCROC represents a shift towards
-              welcoming the unexpected and the wild side of crypto. It's not about the money – it's about
-              sending a message.            </p>
+
+
+              $BCROC is the native utility token of Betting Croc. It represents the health of the Betting Croc ecosystem itself, making it a store of value and the primary token for project related benefits. Mathematically, as the project becomes more successful and attracts a larger community, more $BCROC tokens will be acquired, leading to an increase in price.
+            </p>
             <img id="logoBox4" src={logo}></img>
             <p className='testMiniBox4'>
 
-              The Base Chain's ecosystem is rapidly evolving, witnessing the development of numerous
-              projects and applications. This dynamic expansion provides a solid foundation for BettingCroc's
-              success, enabling the builders to tap into the resources and expertise of other projects. As the
-              Base Chain continues to grow, BettingCroc's potential grows as well.            </p>
+              
+
+Participate in the success of Betting Croc:
+
+token holders can actively contribute to and benefit from the platform’s growth and success, aligning their interests with the community’s shared goals.
+
+<br></br>
+Receive airdrops: 
+
+token holders will be eligible to receive airdrops, gaining access to free tokens or other rewards as part of our commitment to rewarding our community.
+      </p>
           </div>
         </div>
       </RevealOnScroll>

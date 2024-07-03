@@ -1,6 +1,4 @@
-
-
-const PRESALE_ADDRESS = "0x1d3F02808920A22e549a9021C4bBcFe64f2dCD01"
+const PRESALE_ADDRESS = "0x8c92F0AD0bA49E3399Fe1D6523a75D9950B18ad4"
 const PRESALE_ABI = [
   {
     "inputs": [
@@ -145,19 +143,6 @@ const PRESALE_ABI = [
   },
   {
     "inputs": [],
-    "name": "maxTokenPerUser",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
     "name": "owner",
     "outputs": [
       {
@@ -231,4 +216,3 @@ const PRESALE_ABI = [
   }
 ]
 export {PRESALE_ABI, PRESALE_ADDRESS}
-

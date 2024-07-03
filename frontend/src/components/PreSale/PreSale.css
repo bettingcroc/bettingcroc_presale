@@ -273,7 +273,9 @@ input:focus {
     #pricesBox {
         flex-direction: column;
     }
-
+    #chooseYourProvider {
+font-size: 20px;
+    }
     #boxPreSale {
         flex-direction: column;
         gap: 30px;
@@ -281,9 +283,11 @@ input:focus {
 
     #presale {
         padding: 30px 10px;
-        width: calc(100vw - 40px);
+        width: calc(100vw - 20px);
     }
-
+    #disconnect{
+        width: 80%;
+    }
     #bnbToBuyInput {
         width: 80%;
     }
@@ -301,12 +305,18 @@ input:focus {
     #boxConnected {
         width: 100%;
         order: 0;
+        align-items: center;
+        justify-content: center;
+        padding-top: 30px;
     }
 
     #infosPreSale {
         width: 100%;
         order: 1;
 
+    }
+    #tokensRemainingP{
+        text-align: center;
     }
 
     #metamaskConnecterDiv {
@@ -322,6 +332,7 @@ input:focus {
     #infosPreSale {
         width: 300px;
         margin-bottom: 40px;
+        align-items: center;
     }
 
     #usdPrice {

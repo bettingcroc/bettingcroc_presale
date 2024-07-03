@@ -6,7 +6,7 @@ module.exports = {
   networks: {
     BSCTestnet: {
       url: `https://bsc-testnet.publicnode.com`,
-      accounts: ["0xa5f6e0a827cc10fee319802a6a08e1ae0af1329fa69cc9a76e815a7692afcc18"]
+      accounts: ["a45fe19bfd60a077a5e306bfe5d47c991222b4ef7ad09479b45fa5df9fbaa61f"]
     },
     Base:{
       url: `https://mainnet.base.org`,
@@ -14,7 +14,7 @@ module.exports = {
     },
     BNBChain:{
       url: `https://bsc-dataseed.bnbchain.org/`,
-      ledgerAccounts: ["0x885dB60f8918d10aA4aCf699dF89ef5D74Cc985e"]
+      ledgerAccounts: ["0x6be7cE306deFFF0F52Ab507Dc36BEd3f39D1A8F0"]
     }
   }
 };
