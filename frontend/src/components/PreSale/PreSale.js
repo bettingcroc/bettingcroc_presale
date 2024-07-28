@@ -42,7 +42,7 @@ const PreSale = (props) => {
   }
   function weiconvert(number) { return BigInt(number * decimalsConverter(10)); }
   function changePacks(packs) {
-    if (getDecimalPlaces(packs)>3){
+    if (getDecimalPlaces(packs) > 3) {
       return
     }
     setBnbToBuy(packs)
@@ -76,28 +76,28 @@ const PreSale = (props) => {
     let amountOfEth = BigInt((bnbToBuy * 1000000).toString() + "000000000000")
     console.log(amountOfTokens)
     console.log(amountOfEth)
-    let approveToast = props.toast.loading("Buying "+bcrocToBuy+" $BCROC", { closeButton: true , position:"top-center"})
-    try{
-    preSaleContract.methods
-      .buyTokens(amountOfTokens)
-      .send({ from: defaultAccount, value: amountOfEth })
-      .once('receipt', (receipt) => {
-        props.toast.update(approveToast, { render: bcrocToBuy+" $BCROC are yours ! 🐊", type: "success", isLoading: false, closeButton: true, autoClose: 7000 });
+    let approveToast = props.toast.loading("Buying " + bcrocToBuy + " $BCROC", { closeButton: true, position: "top-center" })
+    try {
+      preSaleContract.methods
+        .buyTokens(amountOfTokens)
+        .send({ from: defaultAccount, value: amountOfEth })
+        .once('receipt', (receipt) => {
+          props.toast.update(approveToast, { render: bcrocToBuy + " $BCROC are yours ! 🐊", type: "success", isLoading: false, closeButton: true, autoClose: 7000 });
 
-        console.log("buy success")
-        updateBcrocBalance()
-      })
-      .once('error', (error) => {
-        console.log(error)
-        props.toast.update(approveToast, { render: "Error " + error.code, type: "error", isLoading: false, closeButton: true, autoClose: 7000 });
+          console.log("buy success")
+          updateBcrocBalance()
+        })
+        .once('error', (error) => {
+          console.log(error)
+          props.toast.update(approveToast, { render: "Error " + error.code, type: "error", isLoading: false, closeButton: true, autoClose: 7000 });
 
-      })
-      .catch(e =>{
-        console.log(e)
-        props.toast.update(approveToast, { render: "Something went wrong.. ", type: "error", isLoading: false, closeButton: true, autoClose: 7000 });
+        })
+        .catch(e => {
+          console.log(e)
+          props.toast.update(approveToast, { render: "Something went wrong.. ", type: "error", isLoading: false, closeButton: true, autoClose: 7000 });
 
-      })
-} catch(e){console.log(e)}
+        })
+    } catch (e) { console.log(e) }
   }
   function claimTokens() {
     preSaleContract.methods
@@ -122,7 +122,7 @@ const PreSale = (props) => {
         console.log(error)
       })
   }
-  function updateBcrocBalance(){
+  function updateBcrocBalance() {
     preSaleContract.methods.getBalance(defaultAccount).call().then((result) => { setBalance(Math.round(parseFloat(result) / 10 ** 18)) })
 
   }
@@ -146,7 +146,7 @@ const PreSale = (props) => {
   }, [])
   useEffect(() => {
     if (preSaleContract !== undefined) {
-      preSaleContract.methods.getTotalPresaleTokensRemaining().call().then((result) => { console.log(result);setTokensRemaining(Math.round(parseFloat(result) / 10 ** 18) )})
+      preSaleContract.methods.getTotalPresaleTokensRemaining().call().then((result) => { console.log(result); setTokensRemaining(Math.round(parseFloat(result) / 10 ** 18)) })
       preSaleContract.methods.getIsPreSaleLive().call().then((result) => { console.log(result); setIsPreSaleLive(result) })
       preSaleContract.methods.getAreTokensClaimable().call().then((result) => { console.log(result); setAreTokensClaimable(result) })
 
@@ -160,8 +160,14 @@ const PreSale = (props) => {
   }, [defaultAccount])
   return (
     <div id="presale">
-{    //  <p className="whiteP titleBox">PRESALE</p>
-}      <div id="boxPreSale">
+      <div id="boxPreSale1">
+
+        <p className="whiteP" id="contractAddressP">Presale contract address : <strong id="contractAddress">0x8c92F0AD0bA49E3399Fe1D6523a75D9950B18ad4</strong></p>
+        <p className="whiteP" id="contractAddressP">Connect your wallet and buy tokens or send any amount of BNB to the address</p>
+        <p className="whiteP" id="contractAddressP">Presale price : 0.0005 $</p>
+        <p className="whiteP" id="contractAddressP">Listing price : 0.001 $</p>
+      </div>
+      <div id="boxPreSale">
         {defaultAccount === undefined ?
           <div id="connecterDiv">
 
