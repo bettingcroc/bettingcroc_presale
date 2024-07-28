@@ -14,7 +14,7 @@ module.exports = {
     },
     BNBChain:{
       url: `https://bsc-dataseed.bnbchain.org/`,
-      ledgerAccounts: ["0x6be7cE306deFFF0F52Ab507Dc36BEd3f39D1A8F0"]
+      ledgerAccounts: ["0xD82aBa0F1dD1BB899fd56B4aDdBB8dCA8c481418"]
     }
   }
 };

@@ -5,7 +5,7 @@ async function main() {
   const [ledgerSigner] = await ethers.getSigners();
 
   // Replace with your contract's ABI and address
-  const contractAddress = "0x8c92F0AD0bA49E3399Fe1D6523a75D9950B18ad4"; // Deployed contract address
+  const contractAddress = "0xabbA0a14C157b468cCe9ecC2bdDe25CE846E673A"; // Deployed contract address
   const contractABI = [
     {
       "inputs": [

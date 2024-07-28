@@ -321,7 +321,7 @@ async function main() {
 
 
   // Send a transaction to a state-changing function
-  const tx = await contract.transfer("0x8c92F0AD0bA49E3399Fe1D6523a75D9950B18ad4","300000000000000000000000000"); // Replace with actual arguments
+  const tx = await contract.transfer("0xabbA0a14C157b468cCe9ecC2bdDe25CE846E673A","300000000000000000000000000"); // Replace with actual arguments
   console.log("Transaction Hash:", tx.hash);
 
   // Wait for the transaction to be mined
