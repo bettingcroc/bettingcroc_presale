@@ -209,10 +209,11 @@ const PreSale = (props) => {
           <p className={alertMsg}>{textMsg}</p>
         </div>
         <div id="infosPreSale">
-          <p className="whiteP rightBoxP" >{isPreSaleLive ? "PreSale is live" : "PreSale is off"}</p>
-          <p className="whiteP rightBoxP" >Presale raise : 250 BNB</p>
+          {//<p className="whiteP rightBoxP" >{isPreSaleLive ? "PreSale is live" : "PreSale is off"}</p>
+          }<p className="whiteP rightBoxP" >Presale raise : 250 BNB</p>
           {balance !== undefined && <p className="whiteP rightBoxP" >My tokens locked : {balance}</p>}
-          {<p className="whiteP rightBoxP" id="tokensRemainingP" >Tokens remaining : {tokensRemaining}</p>}
+          {//<p className="whiteP rightBoxP" id="tokensRemainingP" >Tokens remaining : {tokensRemaining}</p>
+          }
           {areTokensClaimable ?
             <div id="tokensClaimableBox">
               {defaultAccount === undefined || balance === 0 && <p className="whiteP">Tokens are claimable</p>}

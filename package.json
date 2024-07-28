@@ -10,9 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@ledgerhq/hw-app-eth": "^6.37.3",
+    "@ledgerhq/hw-transport-node-hid": "^6.29.3",
     "@truffle/hdwallet-provider": "^2.1.15",
     "express": "^4.19.2",
-    "web3": "^4.7.0"
+    "web3": "^4.11.1"
   },
   "type": "module",
   "devDependencies": {
