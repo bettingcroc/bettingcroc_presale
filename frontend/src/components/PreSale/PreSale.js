@@ -28,7 +28,6 @@ const PreSale = (props) => {
   const [balance, setBalance] = useState()
   const [bcrocToBuy, setBcrocToBuy] = useState(60000)
   const [bnbToBuy, setBnbToBuy] = useState(0.05)
-  const [isPreSaleLive, setIsPreSaleLive] = useState()
   const [tokensTotal, setTokensTotal] = useState(0)
   const [tokensReleased, setTokensReleased] = useState(0)
   const [tokensReleasables, setTokensReleasables] = useState(0)
@@ -59,9 +58,7 @@ const PreSale = (props) => {
     localStorage.clear();
   }
   function buyTokens() {
-    if (!isPreSaleLive) {
-      return
-    }
+
     if (defaultAccount === undefined) {
       setAlertMsg("alertMsg")
       setTextMsg("Connect your wallet to buy some $BCROC")
@@ -147,7 +144,6 @@ const PreSale = (props) => {
   useEffect(() => {
     if (preSaleContract !== undefined) {
       preSaleContract.methods.getTotalPresaleTokensRemaining().call().then((result) => { console.log(result); setTokensRemaining(Math.round(parseFloat(result) / 10 ** 18)) })
-      preSaleContract.methods.getIsPreSaleLive().call().then((result) => { console.log(result); setIsPreSaleLive(result) })
       preSaleContract.methods.getAreTokensClaimable().call().then((result) => { console.log(result); setAreTokensClaimable(result) })
 
     }
@@ -211,12 +207,11 @@ const PreSale = (props) => {
           </div>
 
 
-          <button className={isPreSaleLive ? "activeButton" : "inactiveButton"} onClick={(e) => buyTokens()}>BUY $BCROC</button>
+          <button className="activeButton" onClick={(e) => buyTokens()}>BUY $BCROC</button>
           <p className={alertMsg}>{textMsg}</p>
         </div>
         <div id="infosPreSale">
-          {//<p className="whiteP rightBoxP" >{isPreSaleLive ? "PreSale is live" : "PreSale is off"}</p>
-          }<p className="whiteP rightBoxP" >Presale raise : 250 BNB</p>
+          <p className="whiteP rightBoxP" >Presale raise : 250 BNB</p>
           {balance !== undefined && <p className="whiteP rightBoxP" >My tokens locked : {balance}</p>}
           {//<p className="whiteP rightBoxP" id="tokensRemainingP" >Tokens remaining : {tokensRemaining}</p>
           }
