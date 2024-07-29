@@ -162,7 +162,7 @@ const PreSale = (props) => {
     <div id="presale">
       <div id="boxPreSale1">
 
-        <p className="whiteP" id="contractAddressP">Presale contract address : <strong id="contractAddress">0xabbA0a14C157b468cCe9ecC2bdDe25CE846E673A</strong></p>
+        <p className="whiteP" id="contractAddressP">Presale contract address : <strong id="contractAddress">0xd36496A919AF2cE414bc0cD084B66E96d89D99B2</strong></p>
         <p className="whiteP" id="contractAddressP">Connect your wallet and buy tokens or send any amount of BNB to the contract address</p>
         <p className="whiteP" id="contractAddressP">Presale price : 0.0005 $</p>
         <p className="whiteP" id="contractAddressP">Listing price : 0.001 $</p>

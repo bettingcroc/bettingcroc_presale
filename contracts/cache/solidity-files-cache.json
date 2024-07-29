@@ -76,8 +76,8 @@
       ]
     },
     "/home/achille/prog/bettingcroc/presale/contracts/contracts/Presale.sol": {
-      "lastModificationDate": 1719986548401,
-      "contentHash": "beb8509432bf0be157f8a484e735fff9",
+      "lastModificationDate": 1722206587138,
+      "contentHash": "f10bfdd6d2b5f3378b493cd638e4b974",
       "sourceName": "contracts/Presale.sol",
       "solcConfig": {
         "version": "0.8.24",
