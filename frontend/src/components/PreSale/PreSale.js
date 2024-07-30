@@ -162,6 +162,8 @@ const PreSale = (props) => {
         <p className="whiteP" id="contractAddressP">Connect your wallet and buy tokens or send any amount of BNB to the contract address</p>
         <p className="whiteP" id="contractAddressP">Presale price : 0.0005 $</p>
         <p className="whiteP" id="contractAddressP">Listing price : 0.001 $</p>
+        <p className="whiteP" id="contractAddressP">Tokens will be distributed right before the listing of $BCROC on DEXs</p>
+
       </div>
       <div id="boxPreSale">
         {defaultAccount === undefined ?
