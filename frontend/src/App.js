@@ -7,6 +7,8 @@ import PreSale from './components/PreSale/PreSale';
 import logo from "./assets/Logo-03.png"
 import home from "./assets/home.png"
 import crocodileLeft from "./assets/crocodileLeft.png"
+import arrowRight from "./assets/arrowRight.png"
+
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
@@ -31,6 +33,8 @@ function App() {
           <img id="logoTopBar" src={logo}></img></div>
         <div id='linksNavBar'>
           <a className='linkNavBar' href='#tokenomics2'>TOKENOMICS</a>
+          <a className='linkNavBar' href='https://assets.bettingcroc.com/whitepaper.pdf'>WHITEPAPER</a>
+
           <a className='linkNavBar' href='https://twitter.com/bettingcroc'>TWITTER</a>
           <a className='linkNavBar' href='https://t.me/bettingcroc'>TELEGRAM</a>
         </div>
@@ -46,6 +50,8 @@ function App() {
 
         <div id="box2">
           <p id='until'>PRESALE IS LIVE</p>
+          <a id='aboutLink2' href='https://bettingcroc.com'>ABOUT BETTINGCROC<img id="arrowRight" src={arrowRight}></img></a>
+
         </div>
 
 
@@ -79,6 +85,8 @@ function App() {
 
         <div id="tokenomics2">
           <p className='titleBox whiteP'>TOKENOMICS</p>
+          <a id='aboutLink2' href='https://assets.bettingcroc.com/litepaper-tokenomics.pdf'>Tokenomics Litepaper<img id="arrowRight" src={arrowRight}></img></a>
+
           <div id='tokenBox'>
 
             <img id='katVert' src={crocodileLeft}></img>
@@ -118,17 +126,17 @@ function App() {
             <img id="logoBox4" src={logo}></img>
             <p className='testMiniBox4'>
 
-              
 
-Participate in the success of Betting Croc:
 
-token holders can actively contribute to and benefit from the platform’s growth and success, aligning their interests with the community’s shared goals.
+              Participate in the success of Betting Croc:
 
-<br></br>
-Receive airdrops: 
+              token holders can actively contribute to and benefit from the platform’s growth and success, aligning their interests with the community’s shared goals.
 
-token holders will be eligible to receive airdrops, gaining access to free tokens or other rewards as part of our commitment to rewarding our community.
-      </p>
+              <br></br>
+              Receive airdrops:
+
+              token holders will be eligible to receive airdrops, gaining access to free tokens or other rewards as part of our commitment to rewarding our community.
+            </p>
           </div>
         </div>
       </RevealOnScroll>
