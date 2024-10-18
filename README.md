@@ -27,17 +27,17 @@
 <br />
 <div align="center">
   <a href="https://github.com/bettingcroc/bettingcroc_app">
-    <img src="frontend/src/home.png" alt="Logo" width="80" height="80">
+    <img src="https://raw.githubusercontent.com/bettingcroc/bettingcroc_app/main/frontend/src/home.png" alt="Logo" width="80" height="80">
   </a>
 
 <h3 align="center">BettingCroc Presale</h3>
 
   <p align="center">
-    BettingCroc is my biggest personal project until now. It is a web3 dapp allowing users to bet on sport events with an unique system called Pools Payout Mechanism (PPM) to ensure funding and distribution of winnings. The platform also allows players to create their own bets among friends or open to the public, known as peer-to-peer (P2P) bets. Project launch failed but it was a great way to learn about web3, project management and more.
+    BettingCroc presale is a simple react application that allows investors to connect their favorite wallet trough WalletConnect or Metamask to buy BettingCroc tokens with BNB.
     <br />
     <br />
     <br />
-    <a href="/whitepaper.pdf"><strong>Explore the whitepaper »</strong></a>
+    <a href="/litepaper-tokenomics.pdf"><strong>Explore the tokenomics »</strong></a>
     <br />
     <br />
   </p>
@@ -92,14 +92,13 @@
 <!-- GETTING STARTED -->
 ## Getting Started
 
-You can run the application creating a db file, deploying smart contract of betting engine and 2 tokens contracts (1 stablecoin and 1 BettingCroc token).
+You can run the application deploying a presale contract and a token contract.
 
 ### Prerequisites
 
 First install npm dependencies.
 * npm
   ```sh
-  cd backend
   npm i
 
   cd frontend
@@ -108,46 +107,23 @@ First install npm dependencies.
 
 ### Installation
 
-1. Get an API Key at [https://allsportsapi.com](https://allsportsapi.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/achille1017/bettingcroc_app.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
+1. Deploy smart contracts with hardhat from contracts folder and update config files
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   //in config.js
+   const PRESALE_ADDRESS = "YOUR ADDRESS CONTRACT"
+   // in frontend/src/config.js
+   const PRESALE_ADDRESS = "YOUR ADDRESS CONTRACT"
    ```
-5. Deploy smart contracts from sol folder and update config files
-   ```js
-   //in backend/config.js
-   const multiBetAddress = "YOUR ADDRESS CONTRACT"
-   // in frontend/configWebApp.js
-   const MULTIBET_ADDRESS = "YOUR ADDRESS CONTRACT";
-   const USDC_ADDRESS = "YOUR ADDRESS CONTRACT";
-   const BCROC_ADDRESS = "YOUR ADDRESS CONTRACT";
-   ```
-6. Run 
-   ```sh
-   cd scripts
-   cd webapp
-   node server.js
-   cd ..
-   cd betManagements
-   node betCreator2.js
-   node betCloser.js
-   node betEnder2.js
-   ```
-
+2. Run the server
+    ```js
+    node server.js
+    ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Navigate to localhost:4000 and start betting on bets the betCreator2.js will create. You can follow in the db.sqlite file the state of bets with those values : 0 = open 1 = closed 2 = ended 3 = canceled 4 = error.
+Navigate to localhost:4000 and buy tokens for BNB.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
